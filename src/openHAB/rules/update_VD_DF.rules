@@ -1,0 +1,82 @@
+// Keller Lichter
+
+
+rule DF_OG_GA
+	when
+		Item DF_OG_GA received command
+	then
+    var String message=""
+	if (receivedCommand==UP) {message="!w!DF_OG_GA!1$"}
+	if (receivedCommand==DOWN) {message="!w!DF_OG_GA!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule DF_OG_SZ
+	when
+		Item DF_OG_SZ received command
+	then
+    var String message=""
+	if (receivedCommand==UP) {message="!w!DF_OG_SZ!1$"}
+	if (receivedCommand==DOWN) {message="!w!DF_OG_SZ!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule VD_OG_SZ
+	when
+		Item VD_OG_SZ received command
+	then
+    var String message=""
+	if (receivedCommand==UP) {message="!w!VD_OG_SZ!1$"}
+	if (receivedCommand==DOWN) {message="!w!VD_OG_SZ!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule DF_OG_KN
+	when
+		Item DF_OG_KN received command
+	then
+    var String message=""
+	if (receivedCommand==UP) {message="!w!DF_OG_KN!1$"}
+	if (receivedCommand==DOWN) {message="!w!DF_OG_KN!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule VD_OG_KN
+	when
+		Item VD_OG_KN received command
+	then
+    var String message=""
+	if (receivedCommand==UP) {message="!w!VD_OG_KN!1$"}
+	if (receivedCommand==DOWN) {message="!w!VD_OG_KN!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+
+rule DF_OG_KS
+	when
+		Item DF_OG_KS received command
+	then
+    var String message=""
+	if (receivedCommand==UP) {message="!w!DF_OG_KS!1$"}
+	if (receivedCommand==DOWN) {message="!w!DF_OG_KS!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule VD_OG_KS
+	when
+		Item VD_OG_KS received command
+	then
+    var String message=""
+	if (receivedCommand==UP) {message="!w!VD_OG_KS!1$"}
+	if (receivedCommand==DOWN) {message="!w!VD_OG_KS!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+

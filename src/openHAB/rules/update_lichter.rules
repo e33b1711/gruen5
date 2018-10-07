@@ -1,0 +1,345 @@
+// Keller Lichter
+
+
+rule LI_UG_HK
+	when
+		Item LI_UG_HK received command
+	then
+    var String message="!w!LI_UG_HK!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_UG_WK
+	when
+		Item LI_UG_WK received command
+	then
+    var String message="!w!LI_UG_WK!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_UG_GA
+	when
+		Item LI_UG_GA received command
+	then
+    var String message="!w!LI_UG_GA!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_UG_HO
+	when
+		Item LI_UG_HO received command
+	then
+    var String message="!w!LI_UG_HO!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_UG_LA
+	when
+		Item LI_UG_LA received command
+	then
+    var String message="!w!LI_UG_LA!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+
+// Aussenlichter
+
+rule LI_EG_VH_on
+	when
+		Item LI_EG_VH received command 
+	then
+    var String message="!w!LI_EG_VH!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule ZE_EG_VH
+	when
+		Item ZE_EG_VH received command 
+	then
+    var String message="!w!ZE_EG_VH!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_EG_AW
+	when
+		Item LI_EG_AW received command
+	then
+    var String message="!w!LI_EG_AW!3$"
+	sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_AO
+	when
+		Item LI_EG_AO received command
+	then
+    var String message="!w!LI_EG_AO!3$"
+	 sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_AS
+	when
+		Item LI_EG_AS received command
+	then
+    var String message="!w!LI_EG_AS!3$"
+	sendCommand(RS485_Gateway_out, message)
+    end
+
+
+// Lichter EG WZ
+
+rule LI_EG_WZ
+	when
+		Item LI_EG_WZ received command
+	then
+    var String message="!w!LI_EG_WZ!3$"
+	sendCommand(RS485_Gateway_out, message)
+	end
+
+rule LI_EG_WZ_L1
+	when
+		Item LI_EG_WZ_L1 received command
+	then
+    var String message="!w!LI_EG_WZ_L1!3$"
+    sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_WZ_L2
+	when
+		Item LI_EG_WZ_L2 received command
+	then
+    var String message="!w!LI_EG_WZ_L2!3$"
+	 sendCommand(RS485_Gateway_out, message)
+    end
+
+// Lichter EG Gang, Gardarobe, WC
+
+rule LI_EG_GA
+	when
+		Item LI_EG_GA received command
+	then
+    var String message="!w!LI_EG_GA!3$"
+	   sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_GA_L1
+	when
+		Item LI_GA_L1 received command
+	then
+    var String message="!w!LI_GA_L1!3$"
+	sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_WC
+	when
+		Item LI_EG_WC received command
+	then
+    var String message="!w!LI_EG_WC!3$"
+	sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_GR
+	when
+		Item LI_EG_GR received command
+	then
+    var String message="!w!LI_EG_GR!3$"
+	sendCommand(RS485_Gateway_out, message)
+    end
+
+// Lichter EG EZ, KU, SP
+
+rule LI_EG_SP
+	when
+		Item LI_EG_SP received command
+	then
+    var String message="!w!LI_EG_SP!3$"
+	sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_EZ_L1
+	when
+		Item LI_EG_EZ_L1 received command
+	then
+    var String message="!w!LI_EG_EZ_L1!3$"
+	sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_EZ
+	when
+		Item LI_EG_EZ received command
+	then
+    var String message="!w!LI_EG_EZ!3$"
+	sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_EZ_L3
+	when
+		Item LI_EG_EZ_L3 received command
+	then
+    var String message="!w!LI_EG_EZ_L3!3$"
+	 sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_EG_KU_L1
+	when
+		Item LI_EG_KU_L1 received command
+	then
+    var String message="!w!LI_EG_KU_L1!3$"
+	    sendCommand(RS485_Gateway_out, message)
+   end
+
+rule LI_EG_EZ_KU
+	when
+		Item LI_EG_EZ_KU received command
+	then
+    var String message="!w!LI_EG_EZ_KU!3$"
+	    sendCommand(RS485_Gateway_out, message)
+    end
+
+// Lichter OG
+
+rule LI_OG_BA
+	when
+		Item LI_OG_BA received command
+	then
+    var String message="!w!LI_OG_BA!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_OG_GA
+	when
+		Item LI_OG_GA received command
+	then
+    var String message="!w!LI_OG_GA!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_OG_GA_L1
+	when
+		Item LI_OG_GA_L1 received command
+	then
+    var String message="!w!LI_OG_GA_L1!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_OG_KN
+	when
+		Item LI_OG_KN received command
+	then
+    var String message="!w!LI_OG_KN!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_OG_KN_L1
+	when
+		Item LI_OG_KN_L1 received command
+	then
+    var String message="!w!LI_OG_KN_L1!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_OG_KS
+	when
+		Item LI_OG_KS received command
+	then
+    var String message="!w!LI_OG_KS!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_OG_KS_L1
+	when
+		Item LI_OG_KS_L1 received command
+	then
+    var String message="!w!LI_OG_KS_L1!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_OG_SZ
+	when
+		Item LI_OG_SZ received command
+	then
+    var String message="!w!LI_OG_SZ!3$"
+    sendCommand(RS485_Gateway_out, message)
+end
+
+rule LI_OG_SZ_L1
+	when
+		Item LI_OG_SZ_L1 received command
+	then
+    var String message="!w!LI_OG_SZ_L1!3$"
+    sendCommand(RS485_Gateway_out, message)
+    end
+
+rule LI_OG_SZ_L2
+	when
+		Item LI_OG_SZ_L2 received command
+	then
+    var String message="!w!LI_OG_SZ_L2!3$"
+	    sendCommand(RS485_Gateway_out, message)
+   end
+   
+   
+rule LI_GR
+	when
+		Item LI_GR received command
+	then
+    var String message="!w!LI_GR!3$"
+    sendCommand(GR_OUT, message)
+end
+
+rule ZE_GR
+	when
+		Item ZE_GR received command
+	then
+    var String message="!w!ZE_GR!3$"
+    sendCommand(GR_OUT, message)
+end
+
+rule LI_GR_L1
+	when
+		Item LI_GR_L1 received command
+	then
+    var String message="!w!LI_GR_L1!3$"
+    sendCommand(GR_OUT, message)
+end
+
+rule LI_GR_L2
+	when
+		Item LI_GR_L2 received command
+	then
+    var String message="!w!LI_GR_L2!3$"
+    sendCommand(GR_OUT, message)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+mar 2017
+l state jetzt mit set_time
+!! achtung, nur bei eg_ost aufgespielt.
+eg_ost änderungen am timer
+
+früher:
+taster auf digitale eingänge umgestellt
+
+dec 2015
+antwort handler für r (read) message verbessert (communication, handler_all_states)
+
+gateways neu geschrieben
+
+
+timer vordach weg (=> openhab)
+
+pump (gartenpumpe) hinzugefügt
+
+timer vordach wieder dazu
+
+
+feb 2016?
+
+
+NOV 2016
+heizungsteller
+
+mar 2017
+schalter auf digital umgebaut

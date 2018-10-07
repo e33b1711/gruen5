@@ -1,0 +1,19 @@
+
+
+/* String ether "ether" {tcp=">[192.168.178.200:23]"} */
+
+String telnet_in "telnet_in" { tcp=">[192.168.178.200:23:'REGEX((.*))']"}
+
+String RS485_Gateway_out "telnet_out" { tcp=">[192.168.178.200:23:'REGEX((.*))']"}    /* name aus historischen gründen!*/
+
+
+String GR_IN "telnet_in" { tcp=">[192.168.178.54:10000:'REGEX((.*))']"}
+
+String GR_OUT "telnet_out" { tcp=">[192.168.178.54:10000:'REGEX((.*))']"} 
+
+
+
+
+
+
+

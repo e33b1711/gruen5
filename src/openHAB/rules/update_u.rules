@@ -1,0 +1,516 @@
+import org.eclipse.smarthome.core.library.types.DecimalType
+
+var count = 4
+
+rule hz_regler
+when
+Time cron "0 0/1 * * * ?"
+then
+
+// keller
+if (count==0){
+	var temp_ist=(TI_UG_WK.state as Number)
+	var temp_soll=(TS_UG_WK.state as Number)
+	var u_default=(UD_UG_WK.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_UG_WK.postUpdate(u_nxt)
+}
+
+if (count==1){
+	var temp_ist=(TI_UG_GA.state as Number)
+	var temp_soll=(TS_UG_GA.state as Number)
+	var u_default=(UD_UG_GA.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_UG_GA.postUpdate(u_nxt)
+}
+
+if (count==2){
+	var temp_ist=(TI_UG_LA.state as Number)
+	var temp_soll=(TS_UG_LA.state as Number)
+	var u_default=(UD_UG_LA.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_UG_LA.postUpdate(u_nxt)
+}
+
+if (count==3){
+	var temp_ist=((TI_UG_HN.state as Number)+(TI_UG_HS.state as Number))/2
+	var temp_soll=(TS_UG_HO.state as Number)
+	var u_default=(UD_UG_H1.state as DecimalType).intValue
+	var u_default2=(UD_UG_H2.state as DecimalType).intValue
+	var u_default3=(UD_UG_H3.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	var	u_nxt2=u_default2
+	var	u_nxt3=u_default3
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){
+			u_nxt=0
+			u_nxt2=0
+			u_nxt3=0
+		}
+		if (temp_diff<-1){
+			u_nxt=15
+			u_nxt2=15
+			u_nxt3=15
+		}
+	}
+	if(Sommerbetrieb.state==ON){
+		u_nxt=0
+		u_nxt2=0
+		u_nxt3=0
+	}
+	U_UG_H1.postUpdate(u_nxt)
+	U_UG_H2.postUpdate(u_nxt2)
+	U_UG_H3.postUpdate(u_nxt3)
+}
+
+
+//EG
+
+if (count==4){
+	var temp_ist=(TI_EG_KU.state as Number)
+	var temp_soll=(TS_EG_KU.state as Number)
+	var u_default=(UD_EG_KU.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_EG_KU.postUpdate(u_nxt)
+}
+
+if (count==5){
+	var temp_ist=(TI_EG_WZ.state as Number)
+	var temp_soll=(TS_EG_WZ.state as Number)
+	var u_default=(UD_EG_WZ.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_EG_WZ.postUpdate(u_nxt)
+}
+
+if (count==6){
+	var temp_ist=(TI_EG_EZ.state as Number)
+	var temp_soll=(TS_EG_EZ.state as Number)
+	var u_default=(UD_EG_E1.state as DecimalType).intValue
+	var u_default2=(UD_EG_E2.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	var	u_nxt2=u_default2
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){
+			u_nxt=0
+			u_nxt2=0
+		}
+		if (temp_diff<-1){
+			u_nxt=15
+			u_nxt2=15
+		}
+	}
+	if(Sommerbetrieb.state==ON){
+		u_nxt=0
+		u_nxt2=0
+	}
+	U_EG_E1.postUpdate(u_nxt)
+	U_EG_E2.postUpdate(u_nxt2)
+}
+
+if (count==7){
+	var temp_ist=(TI_EG_GA.state as Number)
+	var temp_soll=(TS_EG_GA.state as Number)
+	var u_default=(UD_EG_GA.state as DecimalType).intValue
+	var u_default2=(UD_EG_GR.state as DecimalType).intValue
+	var u_default3=(UD_EG_WC.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	var	u_nxt2=u_default2
+	var	u_nxt3=u_default3
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){
+			u_nxt=0
+		}
+		if (temp_diff<-1){
+			u_nxt=15
+		}
+	}
+	if(Sommerbetrieb.state==ON){
+		u_nxt=0
+		u_nxt2=0
+		u_nxt3=0
+	}
+	U_EG_GA.postUpdate(u_nxt)
+	U_EG_GR.postUpdate(u_nxt2)
+	U_EG_WC.postUpdate(u_nxt3)
+}
+
+//OG
+if (count==8){
+	var temp_ist=(TI_OG_KN.state as Number)
+	var temp_soll=(TS_OG_KN.state as Number)
+	var u_default=(UD_OG_KN.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_OG_KN.postUpdate(u_nxt)
+}
+
+if (count==9){
+	var temp_ist=(TI_OG_KS.state as Number)
+	var temp_soll=(TS_OG_KS.state as Number)
+	var u_default=(UD_OG_KS.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_OG_KS.postUpdate(u_nxt)
+}
+
+if (count==10){
+	var temp_ist=(TI_OG_BA.state as Number)
+	var temp_soll=(TS_OG_BA.state as Number)
+	var u_default=(UD_OG_BA.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_OG_BA.postUpdate(u_nxt)
+}
+
+if (count==11){
+	var temp_ist=(TI_OG_SZ.state as Number)
+	var temp_soll=(TS_OG_SZ.state as Number)
+	var u_default=(UD_OG_SZ.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_OG_SZ.postUpdate(u_nxt)
+}
+
+if (count==12){
+	var temp_ist=(TI_OG_GA.state as Number)
+	var temp_soll=(TS_OG_GA.state as Number)
+	var u_default=(UD_OG_GA.state as DecimalType).intValue
+	var temp_diff = temp_ist - temp_soll
+	var u_nxt=u_default
+	
+	if((temp_ist<0) || (temp_ist>35)){}
+	else{
+		if (temp_diff>1){u_nxt=0}
+		if (temp_diff<-1){u_nxt=15}
+	}
+	if(Sommerbetrieb.state==ON){u_nxt=0}
+	U_OG_GA.postUpdate(u_nxt)
+}
+
+
+
+
+
+		count=count+1
+			if (count>12){count=0}
+
+end
+
+
+
+
+
+rule "init_heizung"
+when
+    System started
+then
+ Sommerbetrieb.postUpdate(OFF)
+
+ UD_UG_H1.postUpdate(2)
+ UD_UG_H2.postUpdate(2)
+ UD_UG_H3.postUpdate(2)
+ UD_UG_LA.postUpdate(0)
+ UD_UG_GA.postUpdate(0) 
+ UD_UG_WK.postUpdate(15)
+ 
+ UD_EG_KU.postUpdate(4)
+ UD_EG_E1.postUpdate(4)
+ UD_EG_E2.postUpdate(4)
+ UD_EG_GA.postUpdate(0)
+ UD_EG_WZ.postUpdate(4)
+ UD_EG_GR.postUpdate(2)
+ UD_EG_WC.postUpdate(2)
+ 
+ UD_OG_KS.postUpdate(4)
+ UD_OG_KN.postUpdate(6)
+ UD_OG_GA.postUpdate(0)
+ UD_OG_BA.postUpdate(15)
+ UD_OG_SZ.postUpdate(0)
+ 
+ TS_EG_WZ.postUpdate(22)
+ TS_EG_KU.postUpdate(22) 	
+ TS_EG_EZ.postUpdate(22)
+ TS_EG_GA.postUpdate(20) 	
+
+ TS_OG_BA.postUpdate(24) 	
+ TS_OG_KN.postUpdate(20) 	
+ TS_OG_KS.postUpdate(20) 	
+ TS_OG_SZ.postUpdate(15) 	
+ TS_OG_GA.postUpdate(20) 	
+
+ TS_UG_HO.postUpdate(20) 		
+ TS_UG_WK.postUpdate(24) 	
+ TS_UG_GA.postUpdate(20) 	
+ TS_UG_LA.postUpdate(20)
+  	
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+//UG
+
+rule U_UG_H1
+	when
+		Item U_UG_H1 received update
+	then
+    val outStr = String::format("!w!U_UG_H1!%1$01d$",(U_UG_H1.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+rule U_UG_H2
+	when
+		Item U_UG_H2 received update
+	then
+    val outStr = String::format("!w!U_UG_H2!%1$01d$",(U_UG_H2.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+rule U_UG_H3
+	when
+		Item U_UG_H3 received update
+	then
+    val outStr = String::format("!w!U_UG_H3!%1$01d$",(U_UG_H3.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+rule U_UG_LA
+	when
+		Item U_UG_LA received update
+	then
+    val outStr = String::format("!w!U_UG_LA!%1$01d$",(U_UG_LA.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+rule U_UG_WK
+	when
+		Item U_UG_WK received update
+	then
+    val outStr = String::format("!w!U_UG_WK!%1$01d$",(U_UG_WK.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+rule U_UG_GA
+	when
+		Item U_UG_GA received update
+	then
+    val outStr = String::format("!w!U_UG_GA!%1$01d$",(U_UG_GA.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+
+//EG
+
+rule U_EG_KU
+	when
+		Item U_EG_KU received update
+	then
+    val outStr = String::format("!w!U_EG_KU!%1$01d$",(U_EG_KU.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+rule U_EG_E1
+	when
+		Item U_EG_E1 received update
+	then
+    val outStr = String::format("!w!U_EG_E1!%1$01d$",(U_EG_E1.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+rule U_EG_E2
+	when
+		Item U_EG_E2 received update
+	then
+    val outStr = String::format("!w!U_EG_E2!%1$01d$",(U_EG_E2.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+rule U_EG_GA
+	when
+		Item U_EG_GA received update
+	then
+    val outStr = String::format("!w!U_EG_GA!%1$01d$",(U_EG_GA.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+rule U_EG_WZ
+	when
+		Item U_EG_WZ received update
+	then
+    val outStr = String::format("!w!U_EG_WZ!%1$01d$",(U_EG_WZ.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+rule U_EG_GR
+	when
+		Item U_EG_GR received update
+	then
+    val outStr = String::format("!w!U_EG_GR!%1$01d$",(U_EG_GR.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+rule U_EG_WC
+	when
+		Item U_EG_WC received update
+	then
+    val outStr = String::format("!w!U_EG_WC!%1$01d$",(U_EG_WC.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+//OG
+
+
+rule U_OG_KS
+	when
+		Item U_OG_KS received update
+	then
+    val outStr = String::format("!w!U_OG_KS!%1$01d$",(U_OG_KS.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+rule U_OG_KN
+	when
+		Item U_OG_KN received update
+	then
+    val outStr = String::format("!w!U_OG_KN!%1$01d$",(U_OG_KN.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+ 
+rule U_OG_GA
+	when
+		Item U_OG_GA received update
+	then
+    val outStr = String::format("!w!U_OG_GA!%1$01d$",(U_OG_GA.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+rule U_OG_BA
+	when
+		Item U_OG_BA received update
+	then
+    val outStr = String::format("!w!U_OG_BA!%1$01d$",(U_OG_BA.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+rule U_OG_SZ
+	when
+		Item U_OG_SZ received update
+	then
+    val outStr = String::format("!w!U_OG_SZ!%1$01d$",(U_OG_SZ.state as DecimalType).intValue)
+    sendCommand(RS485_Gateway_out, outStr)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

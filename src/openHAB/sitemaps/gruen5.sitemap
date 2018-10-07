@@ -1,0 +1,259 @@
+sitemap gruen5 label="Grünbichlstrasse 5"
+{
+	
+	
+	Frame label="Lichter / Verdunkelung" {
+	
+Text label="Keller" icon="cellar" {
+	Frame label="Hobby"  {
+		Switch item=LI_UG_HO
+	}
+	Frame label="Gang"  {
+		Switch item=LI_UG_GA
+	}
+	Frame label="Waschküche"  {
+		Switch item=LI_UG_WK 
+	}
+	Frame label="Lager"  {
+		Switch item=LI_UG_LA
+	}
+	Frame label="Heizkeller"  {
+		Switch item=LI_UG_HK
+	}
+}
+
+Text label="Erdgeschoss" icon="groundfloor" {
+	Frame label="Küche"  {
+		Switch item=LI_EG_KU_L1
+		Switch item=LI_EG_EZ_KU
+		Switch item=LI_EG_SP
+	}
+	Frame label="Wohnzimmer"  {
+		Switch item=LI_EG_WZ 	
+		Switch item=LI_EG_WZ_L1 
+		Switch item=LI_EG_WZ_L2 
+	}
+	Frame label="Esszimmer"  {
+		Switch item=LI_EG_EZ 	
+		Switch item=LI_EG_EZ_L1 
+		Switch item=LI_EG_EZ_L3 
+		Switch item=LI_EG_EZ_KU 
+		Switch item=RO_EG_SU
+		Switch item=RO_EG_WE
+	}
+	Frame label="Gang"  {
+		Switch item=LI_EG_GA 	
+		Switch item=LI_GA_L1 
+		Switch item=BELL	
+	}
+	Frame label="WC"  {
+		Switch item=LI_EG_WC
+	}
+	Frame label="Gardarobe"  {
+		Switch item=LI_EG_GR 
+	}
+	}
+	
+
+	
+	Text label="Obergeschoss" icon="firstfloor" {
+		Frame label="Makros"  {
+		Switch item=VD_OG
+		}
+		Frame label="Kurbis Zimmer"  {
+			Switch item=LI_OG_KS 	
+			Switch item=LI_OG_KS_L1
+			Switch item=RO_OG_KS
+			Switch item=VD_OG_KS
+			Switch item=DF_OG_KS
+            }
+        Frame label="Leos Zimmer"  {
+        	Switch item=LI_OG_KN 
+			Switch item=LI_OG_KN_L1 
+			Switch item=RO_OG_KN
+			Switch item=VD_OG_KN
+			Switch item=DF_OG_KN
+            }
+         Frame label="Bad"  {
+         	Switch item=LI_OG_BA 
+			Switch item=RO_OG_BA
+            }
+         Frame label="Schlafzimmer"  {
+         	Switch item=LI_OG_SZ 	
+			Switch item=LI_OG_SZ_L1
+			Switch item=LI_OG_SZ_L2
+			Switch item=RO_OG_SZ
+			Switch item=VD_OG_SZ
+			Switch item=DF_OG_SZ
+
+            }
+         Frame label="Gang"  {
+         	Switch item=LI_OG_GA 	
+			Switch item=LI_OG_GA_L1 
+			Switch item=DF_OG_GA
+            }
+}
+Text label="Garage / Aussen" icon="garage_detached_selected" {
+	 Frame label="Garage"  {
+        	Switch item=LI_GR 
+			Switch item=LI_GR_L1
+			Switch item=LI_GR_L2
+			Switch item=ZE_GR
+			Switch item=DO_GR
+            }
+     Frame label="Garten"  {
+         	Switch item=LI_EG_AS 
+			Switch item=LI_EG_AW 	
+			Switch item=LI_EG_AO
+			Switch item=PUMP
+            }
+     Frame label="Vorhaus"  {
+			Switch item=LI_EG_VH
+ 			Switch item=ZE_EG_VH
+            }
+         }
+		
+}
+
+Frame label="Heizung / Klima" {
+Text label="Keller" icon="cellar" {
+	Frame label="Hobby"  {
+		Setpoint item=UD_UG_H1  step=1 minValue=0 maxValue=15
+		Text item=U_UG_H1 		label="Ist-Stellwert [%.1f]" icon="heating"
+        Setpoint item=UD_UG_H2  step=1 minValue=0 maxValue=15
+        Text item=U_UG_H2 		label="Ist-Stellwert [%.1f]" icon="heating"
+        Setpoint item=UD_UG_H3  step=1 minValue=0 maxValue=15
+        Text item=U_UG_H3 		label="Ist-Stellwert [%.1f]" icon="heating"
+        Setpoint item=TS_UG_HO  step=1 minValue=15 maxValue=25
+        Text item=TI_UG_HS label="Ist-Temperatur Nord [%.1f °C]" icon="temperature"
+        Setpoint item=TS_UG_HO  step=1 minValue=15 maxValue=25
+        Text item=TI_UG_HN label="Ist-Temperatur Süd [%.1f °C]" icon="temperature"
+        Text item=HI_UG_HS label="Feuchtigkeit [%s %%]" icon="water"
+        Text item=HI_UG_HN label="Feuchtigkeit [%s %%]" icon="water"
+	}
+	Frame label="Gang"  {
+        Setpoint item=UD_UG_GA  step=1 minValue=0 maxValue=15
+        Text item=U_UG_GA 		label="Ist-Stellwert [%.1f]" icon="heating"
+        Setpoint item=TS_UG_GA  step=1 minValue=15 maxValue=25
+		Text item=TI_UG_GA label="Ist-Temperatur [%.1f °C]" icon="temperature"
+        Text item=HI_UG_GA label="Feuchtigkeit [%s %%]" icon="water"
+	}
+	Frame label="Waschküche"  {
+		Setpoint item=UD_UG_WK  step=1 minValue=0 maxValue=15
+		Text item=U_UG_WK 		label="Ist-Stellwert [%.1f]" icon="heating"
+		Setpoint item=TS_UG_WK  step=1 minValue=15 maxValue=25
+		Text item=TI_UG_WK label="Ist-Temperatur [%.1f °C]" icon="temperature"
+        Text item=HI_UG_WK label="Feuchtigkeit [%s %%]" icon="water"
+	}
+	Frame label="Lager"  {
+		Setpoint item=UD_UG_LA  step=1 minValue=0 maxValue=15
+		Text item=U_UG_LA	label="Ist-Stellwert [%.1f]" icon="heating"
+		Setpoint item=TS_UG_LA  step=1 minValue=15 maxValue=25
+		Text item=TI_UG_LA label="Ist-Temperatur [%.1f °C]" icon="temperature"
+        Text item=HI_UG_LA label="Feuchtigkeit [%s %%]" icon="water"
+	}
+	Frame label="Heizkeller"  {
+		Text item=TI_UG_HK label="Ist-Temperatur [%.1f °C]" icon="temperature"
+        Text item=HI_UG_HK label="Feuchtigkeit [%s %%]" icon="water"
+	}
+}
+
+Text label="Erdgeschoss" icon="groundfloor" {
+	Frame label="Küche"  {
+		Setpoint item=UD_EG_KU  step=1 minValue=0 maxValue=15
+		Text item=U_EG_KU 		label="Ist-Stellwert [%.1f]" icon="heating"
+		Setpoint item=TS_EG_KU  step=1 minValue=15 maxValue=25
+		Text item=TI_EG_KU label="Ist-Temperatur [%.1f °C]" icon="temperature"
+        Text item=HI_EG_KU label="Feuchtigkeit [%s %%]" icon="water"
+	}
+	Frame label="Wohnzimmer"  {
+		Setpoint item=UD_EG_WZ  step=1 minValue=0 maxValue=15
+		Text item=U_EG_WZ 		label="Ist-Stellwert [%.1f]" icon="heating"
+		Setpoint item=TS_EG_WZ  step=1 minValue=15 maxValue=25
+		Text item=TI_EG_WZ label="Ist-Temperatur [%.1f °C]" icon="temperature"
+        Text item=HI_EG_WZ label="Feuchtigkeit [%s %%]" icon="water"
+	}
+	Frame label="Esszimmer"  {
+ 		Setpoint item=UD_EG_E1  step=1 minValue=0 maxValue=15
+ 		Text item=U_EG_E1 		label="Ist-Stellwert [%.1f]" icon="heating"
+ 		Setpoint item=UD_EG_E2  step=1 minValue=0 maxValue=15
+ 		Text item=U_EG_E2 		label="Ist-Stellwert [%.1f]" icon="heating"
+ 		Setpoint item=TS_EG_EZ  step=1 minValue=15 maxValue=25
+		Text item=TI_EG_EZ label="Ist-Temperatur [%.1f °C]" icon="temperature"
+        Text item=HI_EG_EZ label="Feuchtigkeit [%s %%]" icon="water"
+	}
+	Frame label="Gang"  {
+		Setpoint item=UD_EG_GA  step=1 minValue=0 maxValue=15
+		Text item=U_EG_GA 		label="Ist-Stellwert [%.1f]" icon="heating"
+		Setpoint item=TS_EG_GA  step=1 minValue=15 maxValue=25
+		Text item=TI_EG_GA label="Ist-Temperatur [%.1f °C]" icon="temperature"
+        Text item=HI_EG_GA label="Feuchtigkeit [%s %%]" icon="water"
+	}
+	Frame label="WC"  {
+		Setpoint item=UD_EG_WC  step=1 minValue=0 maxValue=15
+	}
+	Frame label="Gardarobe"  {
+		Setpoint item=UD_EG_GR  step=1 minValue=0 maxValue=15
+	}
+	}
+	
+	Text label="Obergeschoss" icon="firstfloor" {
+		Frame label="Kurbis Zimmer"  {
+			Setpoint item=UD_OG_KS  step=1 minValue=0 maxValue=15
+			Text item=U_OG_KS 		label="Ist-Stellwert [%.1f]" icon="heating"
+		    Setpoint item=TS_OG_KS  step=1 minValue=15 maxValue=25
+		    Text item=TI_OG_KS label="Ist-Temperatur [%.1f °C]" icon="temperature"
+            Text item=HI_OG_KS label="Feuchtigkeit [%s %%]" icon="water"
+            }
+        Frame label="Leos Zimmer"  {
+			Setpoint item=UD_OG_KN  step=1 minValue=0 maxValue=15
+			Text item=U_OG_KN 		label="Ist-Stellwert [%.1f]" icon="heating"
+		    Setpoint item=TS_OG_KN  step=1 minValue=15 maxValue=25
+		    Text item=TI_OG_KN label="Ist-Temperatur [%.1f °C]" icon="temperature"
+            Text item=HI_OG_KN label="Feuchtigkeit [%s %%]" icon="water"
+            }
+         Frame label="Bad"  {
+			Setpoint item=UD_OG_BA  step=1 minValue=0 maxValue=15
+			Text item=U_OG_BA 		label="Ist-Stellwert [%.1f]" icon="heating"
+		    Setpoint item=TS_OG_BA  step=1 minValue=15 maxValue=25
+		    Text item=TI_OG_BA label="Ist-Temperatur [%.1f °C]" icon="temperature"
+            Text item=HI_OG_BA label="Feuchtigkeit [%s %%]" icon="water"
+            }
+         Frame label="Schlafzimmer"  {
+			Setpoint item=UD_OG_SZ  step=1 minValue=0 maxValue=15
+			Text item=U_OG_SZ 		label="Ist-Stellwert [%.1f]" icon="heating"
+		    Setpoint item=TS_OG_SZ  step=1 minValue=15 maxValue=25
+		    Text item=TI_OG_SZ label="Ist-Temperatur [%.1f °C]" icon="temperature"
+            Text item=HI_OG_SZ label="Feuchtigkeit [%s %%]" icon="water"
+            }
+         Frame label="Gang"  {
+			Setpoint item=UD_OG_GA  step=1 minValue=0 maxValue=15
+			Text item=U_OG_GA 		label="Ist-Stellwert [%.1f]" icon="heating"
+		    Setpoint item=TS_OG_GA  step=1 minValue=15 maxValue=25
+		    Text item=TI_OG_GA 		label="Ist-Temperatur [%.1f °C]" icon="temperature"
+            Text item=HI_OG_GA 		label="Feuchtigkeit [%s %%]" icon="water"
+            }
+}
+Text label="Garage / Aussen" icon="garage_detached_selected" {
+		
+		 Text item=TI_GR 		label="Ist-Temperatur [%.1f °C]" icon="temperature"
+         Text item=HI_GR 		label="Feuchtigkeit [%s %%]" icon="water"
+         Text item=TI_G2 		label="Ist-Temperatur [%.1f °C]" icon="temperature"
+         Text item=HI_G2 		label="Feuchtigkeit [%s %%]" icon="water"
+         }
+		
+Switch item=Sommerbetrieb
+}
+
+Frame label="Astronomische Daten" {
+	 		Text item=time
+            Text item=date
+            Text item=Sunrise_Time label="Sonnenaufgang [%1$tH:%1$tM]" 
+            Text item=Sunset_Time label="Sonnenuntergang [%1$tH:%1$tM]" 
+            Text item=Sun_Elevation label="Elevation der Sonne"
+            Text item=Sun_Azimuth label="Azimut der Sonne" 
+
+        }
+
+}
+

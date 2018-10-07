@@ -1,0 +1,72 @@
+rule RO_EG_SU
+	when
+		Item RO_EG_SU received command
+	then
+    var String message="!w!RO_EG_SU!0$!w!RO_EG_SU_ON!0$!w!RO_EG_SU_UD!0$"
+	if (receivedCommand==STOP) {postUpdate(RO_EG_SU, 50) }
+	if (receivedCommand==UP) {message="!w!RO_EG_SU!1$"}
+	if (receivedCommand==DOWN) {message="!w!RO_EG_SU!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule RO_EG_WE
+	when
+		Item RO_EG_WE received command
+	then
+    var String message="!w!RO_EG_WE!0$!w!RO_EG_WE_ON!0$!w!RO_EG_WE_UD!0$"
+	if (receivedCommand==STOP) {postUpdate(RO_EG_WE, 50) }
+	if (receivedCommand==UP) {message="!w!RO_EG_WE!1$"}
+	if (receivedCommand==DOWN) {message="!w!RO_EG_WE!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule RO_OG_BA
+	when
+		Item RO_OG_BA received command
+	then
+    var String message="!w!RO_OG_BA!0$!w!RO_OG_BA_ON!0$!w!RO_OG_BA_UD!0$"
+	if (receivedCommand==STOP) {postUpdate(RO_OG_BA, 50) }
+	if (receivedCommand==UP) {message="!w!RO_OG_BA!1$"}
+	if (receivedCommand==DOWN) {message="!w!RO_OG_BA!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule RO_OG_KN
+	when
+		Item RO_OG_KN received command
+	then
+    var String message="!w!RO_OG_KN!0$!w!RO_OG_KN_ON!0$!w!RO_OG_KN_UD!0$"
+	if (receivedCommand==STOP) {postUpdate(RO_OG_KN, 50) }
+	if (receivedCommand==UP) {message="!w!RO_OG_KN!1$"}
+	if (receivedCommand==DOWN) {message="!w!RO_OG_KN!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule RO_OG_KS
+	when
+		Item RO_OG_KS received command
+	then
+    var String message="!w!RO_OG_KS!0$!w!RO_OG_KS_ON!0$!w!RO_OG_KS_UD!0$"
+	if (receivedCommand==STOP) {postUpdate(RO_OG_KS, 50) }
+	if (receivedCommand==UP) {message="!w!RO_OG_KS!1$"}
+	if (receivedCommand==DOWN) {message="!w!RO_OG_KS!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+
+rule RO_OG_SZ
+	when
+		Item RO_OG_SZ received command
+	then
+    var String message="!w!RO_OG_SZ!0$!w!RO_OG_SZ_ON!0$!w!RO_OG_SZ_UD!0$"
+	if (receivedCommand==STOP) {postUpdate(RO_OG_SZ, 50) }
+	if (receivedCommand==UP) {message="!w!RO_OG_SZ!1$"}
+	if (receivedCommand==DOWN) {message="!w!RO_OG_SZ!-1$"}
+    sendCommand(RS485_Gateway_out, message)
+    println("rs485 out " + message)
+end
+

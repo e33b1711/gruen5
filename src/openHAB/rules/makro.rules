@@ -1,0 +1,40 @@
+rule VD_UG_DOWN
+	when
+		Item VD_OG received update 100
+	then
+    sendCommand(RO_OG_BA, DOWN)
+    sendCommand(RO_OG_SZ, DOWN)
+    sendCommand(RO_OG_KN, DOWN)
+    sendCommand(RO_OG_KS, DOWN)
+    
+    sendCommand(VD_OG_SZ, DOWN)
+    sendCommand(VD_OG_KN, DOWN)
+    sendCommand(VD_OG_KS, DOWN)
+    
+end
+
+rule VD_UG_UP
+	when
+		Item VD_OG received update 0
+	then
+    sendCommand(RO_OG_BA, UP)
+    sendCommand(RO_OG_SZ, UP)
+    sendCommand(RO_OG_KN, UP)
+    sendCommand(RO_OG_KS, UP)
+    
+    sendCommand(VD_OG_SZ, UP)
+    sendCommand(VD_OG_KN, UP)
+    sendCommand(VD_OG_KS, UP)
+end
+
+
+
+
+
+
+
+
+
+
+
+

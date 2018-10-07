@@ -1,0 +1,92 @@
+var counter = 5
+
+
+rule QUERY_TEMP_0
+	when
+		Time cron "0 0/1 * * * ?"
+		
+	then
+			
+			
+			if(counter==0){
+			sendCommand(RS485_Gateway_out, "!r!TI_UG_WK!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_UG_WK!0$")
+			}
+			
+			if(counter==1){
+			sendCommand(RS485_Gateway_out, "!r!TI_UG_HK!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_UG_HK!0$")
+			}
+			if(counter==2){
+			sendCommand(RS485_Gateway_out, "!r!TI_UG_GA!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_UG_GA!0$")
+			}
+			if(counter==3){
+			sendCommand(RS485_Gateway_out, "!r!TI_UG_HN!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_UG_HN!0$")
+			}
+			if(counter==4){
+			sendCommand(RS485_Gateway_out, "!r!TI_UG_HS!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_UG_HS!0$")
+			}
+			if(counter==5){
+			sendCommand(RS485_Gateway_out, "!r!TI_UG_LA!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_UG_LA!0$")
+			}
+			
+			if(counter==6){
+			sendCommand(RS485_Gateway_out, "!r!TI_EG_WZ!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_EG_WZ!0$")
+			}
+			if(counter==7){
+			sendCommand(RS485_Gateway_out, "!r!TI_EG_EZ!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_EG_EZ!0$")
+			}
+			if(counter==8){
+			sendCommand(RS485_Gateway_out, "!r!TI_EG_KU!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_EG_KU!0$")
+			}
+			if(counter==9){
+			sendCommand(RS485_Gateway_out, "!r!TI_EG_GA!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_EG_GA!0$")
+			}
+			
+			if(counter==10){
+			sendCommand(RS485_Gateway_out, "!r!TI_OG_BA!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_OG_BA!0$")
+			}
+			if(counter==11){
+			sendCommand(RS485_Gateway_out, "!r!TI_OG_GA!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_OG_GA!0$")
+			}
+			if(counter==12){
+			sendCommand(RS485_Gateway_out, "!r!TI_OG_SZ!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_OG_SZ!0$")
+			}
+			if(counter==13){
+			sendCommand(RS485_Gateway_out, "!r!TI_OG_KN!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_OG_KN!0$")
+			}
+			if(counter==14){
+			sendCommand(RS485_Gateway_out, "!r!TI_OG_KS!0$")
+			sendCommand(RS485_Gateway_out, "!r!HI_OG_KS!0$")
+			}
+			if(counter==15){
+			sendCommand(GR_OUT, "!r!TI_GR!0$")
+			sendCommand(GR_OUT, "!r!HI_GR!0$")
+			}
+			if(counter==16){
+			sendCommand(GR_OUT, "!r!TI_G2!0$")
+			sendCommand(GR_OUT, "!r!HI_G2!0$")
+			}
+			
+			counter=counter+1
+			if (counter>16){counter=0}
+end
+
+
+			
+
+
+
+

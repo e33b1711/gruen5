@@ -1,0 +1,12 @@
+Number Sun_Elevation            "Elevation der Sonne"                 <sun>       { channel = "astro:sun:home:position#elevation" }
+Number Sun_Azimuth              "Azimut der Sonne"                   <sun>       { channel = "astro:sun:home:position#azimuth" }
+DateTime Sunrise_Time           "Sonnenaufgang [%1$tH:%1$tM]"         <sunrise>   { channel = "astro:sun:home:rise#start" }
+DateTime Sunset_Time            "[%1$tH:%1$tM]"          <sunset>    { channel = "astro:sun:home:set#start" }
+
+DateTime time  "Uhrzeit [%1$tH:%1$tM]"  								<clock>   	{ channel="ntp:ntp:demo:dateTime" } 
+DateTime date  "Datum [%1$tA, %1$td.%1$tm.%1$tY]"  				<calendar>	{ channel="ntp:ntp:demo:dateTime" }
+
+
+
+Switch Sunset_Event   {astro="planet=sun, type=rise, property=start, offset=0"}
+Switch Sunset_Event_p120   {astro="planet=sun, type=rise, property=start, offset=120"}

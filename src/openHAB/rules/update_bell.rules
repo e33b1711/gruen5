@@ -1,0 +1,36 @@
+rule BELL
+	when
+		Item BELL received command
+	then
+	if (receivedCommand==OFF) {
+		sendCommand(RS485_Gateway_out, "!w!BELL!0$");
+		postUpdate(BELL, OFF);
+	}
+	if (receivedCommand==ON) {
+		sendCommand(RS485_Gateway_out, "!w!BELL!1$");
+		postUpdate(BELL, ON);
+	}
+end
+
+rule PUMP
+	when
+		Item PUMP received command
+	then
+	if (receivedCommand==OFF) {
+		sendCommand(RS485_Gateway_out, "!w!PUMP!0$");
+		postUpdate(PUMP, OFF);
+	}
+	if (receivedCommand==ON) {
+		sendCommand(RS485_Gateway_out, "!w!PUMP!1$");
+		postUpdate(PUMP, ON);
+	}
+end
+
+
+//rule BELL_update
+//	when
+//		Item BELL received update ON
+//	then
+//		sendNotification("e33b171@gmail.com", "Türklingel")
+//end
+

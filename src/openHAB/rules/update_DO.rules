@@ -1,0 +1,10 @@
+rule DO_GA
+	when
+		Item DO_GR received command
+	then
+    var String message=""
+	if (receivedCommand==UP) {message="!w!DO_GR!1$"}
+	if (receivedCommand==DOWN) {message="!w!DO_GR!-1$"}
+    sendCommand(GR_OUT, message)
+    
+end

@@ -1,0 +1,11 @@
+sitemap tools label="Tools"
+{
+	Frame label="Tools" {
+			Text item=GR_IN label="[%s]"
+			Text item=telnet_in label="[%s]"
+			Switch item=Sunset_Event_p120
+			Switch item=Sunset_Event
+		}
+			
+}
+

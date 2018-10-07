@@ -1,0 +1,264 @@
+Group All
+Group EG 				(All)
+Group OG 				(All)
+Group UG 				(All)
+Group Aussen			(All)
+Group Garage			(All)
+
+Group Licht 			(All)
+Group Rollo 			(All)
+Group Temperatur 		(All)
+Group Feuchtigkeit		(All)
+Group Verdunkelung		(All)
+Group Dachfenster		(All)
+Group heizung_stellwert	(All)
+
+Group RS485_IN				"schreibbar vom RS485"
+Group RS485_OUT 			"schreibbar auf RS485"
+Group GR_gateway			"am Garagen-Gateway"
+
+
+Group EG_WZ 		"Wohnzimmer" 	<video> 		(EG)
+Group EG_KU 		"Küche" 		<kitchen> 		(EG)
+Group EG_EZ 		"Esszimmer" 	<kitchen> 		(EG)
+Group EG_GA 		"Gang" 			<corridor> 		(EG)
+Group EG_GR 		"Gardarobe" 	<video> 		(EG)
+Group EG_WC 		"WC" 			<bath> 			(EG)
+
+Group OG_BA 		"Badezimmer" 	<bath> 		(OG)
+Group OG_KN 		"Leos Zimmer" 	<boy2>  	(OG)
+Group OG_KS 		"Kurbis Zimmer" <boy1> 		(OG)
+Group OG_SZ 		"Schlafzimmer" 	<bedroom> 	(OG)
+Group OG_GA 		"Gang" 	  		<corridor> 	(OG)
+
+Group UG_HO 		"Hobbyraum" 	<office> 	(UG)
+Group UG_WK 		"Waschküche" 	<bath>  	(UG)
+Group UG_HK 		"Heizkeller" 	<bath> 		(UG)
+Group UG_GA 		"Gang" 			<corridor> 	(UG)
+Group UG_LA 		"Lager" 		<corridor> 	(UG)
+
+
+
+
+/* Lichter */
+Switch LI_EG_WZ 	"Decke Mitte"	 	 	(Licht, EG_WZ, RS485_IN, RS485_OUT) 		{autoupdate="false"}
+Switch LI_EG_WZ_L1 	"Decke vorn" 		 	(Licht, EG_WZ, RS485_IN, RS485_OUT) 		{autoupdate="false"}
+Switch LI_EG_WZ_L2 	"Decke hinten" 	 		(Licht, EG_WZ, RS485_IN, RS485_OUT)			{autoupdate="false"}
+
+Switch LI_EG_KU_L1 	"Arbeitsbeleuchtung" 	(Licht, EG_KU, RS485_IN, RS485_OUT) 		{autoupdate="false"}
+
+Switch LI_EG_EZ 	"Esstisch" 	 			(Licht, EG_EZ, RS485_IN, RS485_OUT) 		{autoupdate="false"}
+Switch LI_EG_EZ_L1 	"Wandleuchten" 			(Licht, EG_EZ, RS485_IN, RS485_OUT) 		{autoupdate="false"}
+Switch LI_EG_EZ_L3 	"Leselampe" 			(Licht, EG_EZ, RS485_IN, RS485_OUT) 		{autoupdate="false"}
+Switch LI_EG_EZ_KU 	"Grundbeleuchtung"		(Licht, EG_EZ, EG_KU, RS485_IN, RS485_OUT)	{autoupdate="false"}
+
+
+Switch LI_EG_GA 	"Decke" 				(Licht, EG_GA, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_GA_L1 	"Wandleuchten" 			(Licht, EG_GA, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_EG_GR 	"Decke" 				(Licht, EG_GR, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_EG_WC 	"Decke" 				(Licht, EG_WC, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_EG_SP 	"Speis" 				(Licht, EG_KU, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+
+Switch LI_OG_BA 	"Decke" 				(Licht, OG_BA, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_OG_KN 	"Decke" 				(Licht, OG_KN, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_OG_KN_L1 	"Spots" 				(Licht, OG_KN, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_OG_KS 	"Decke" 				(Licht, OG_KS, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_OG_KS_L1 	"Spots" 				(Licht, OG_KS, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_OG_SZ 	"Decke" 				(Licht, OG_SZ, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_OG_SZ_L1 	"Leselampe Melli" 		(Licht, OG_SZ, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_OG_SZ_L2 	"Leselampe Anselm" 		(Licht, OG_SZ, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_OG_GA 	"Decke" 	  			(Licht, OG_GA, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_OG_GA_L1 	"Spots" 	  			(Licht, OG_GA, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_UG_HO 	"Decke" 				(Licht, UG_HO, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_UG_WK 	"Decke" 				(Licht, UG_WK, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_UG_HK 	"Decke" 				(Licht, UG_HK, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_UG_GA 	"Decke" 				(Licht, UG_GA, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_UG_LA 	"Decke" 				(Licht, UG_LA, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_EG_VH 	"Vordach" 										(Licht, Aussen, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_EG_AS 	"Terrasse Süden" 								(Licht, Aussen, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_EG_AW 	"Terrasse Westen" 								(Licht, Aussen, RS485_IN, RS485_OUT) {autoupdate="false"}
+Switch LI_EG_AO 	"Wand Osten" 									(Licht, Aussen, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+Switch LI_GR 		"Grundbeleuchtung" 								(Licht, Garage, GR_gateway) {autoupdate="false"}
+Switch LI_GR_L1 	"Einfahrtsbeleuchtung" 							(Licht, Garage, GR_gateway) {autoupdate="false"}
+Switch LI_GR_L2 	"Aussen" 										(Licht, Garage, GR_gateway) {autoupdate="false"}
+Switch ZE_GR	 	"Timer" 										(Licht, Garage, GR_gateway) {autoupdate="false"}
+
+/* Klingel */
+Switch BELL 		"Klingel" 										(EG_GA, RS485_IN, RS485_OUT) {autoupdate="false"}
+
+/* Klingel */
+Switch PUMP 		"Zisternenpumpe" 								(Aussen, RS485_OUT) {autoupdate="false"}
+
+
+/* Timer */
+Switch ZE_EG_VH 	"Vordach Timmer"				(Licht, Aussen, RS485_IN, RS485_OUT) {autoupdate="false"} 
+
+/*Makros */
+Rollershutter VD_OG		"Verdunkelung OG"   		<settings>		(OG, RS485_IN, RS485_OUT)
+
+
+/* Rollos, Verdunkelungen, Dachfenster */
+Rollershutter RO_EG_SU 	"Rollo Süd" 					(Rollo, EG_EZ, RS485_IN, RS485_OUT) 
+Rollershutter RO_EG_WE 	"Rollo West" 					(Rollo, EG_EZ, RS485_IN, RS485_OUT)
+
+Rollershutter RO_OG_BA 		"Rollo" 						(Rollo, OG_BA, RS485_IN, RS485_OUT) 
+
+Rollershutter DF_OG_GA	 	"Dachfenster" 					(Dachfenster, OG_GA, RS485_IN, RS485_OUT)
+
+Rollershutter RO_OG_KN 		"Rollo" 						(Rollo, OG_KN, RS485_IN, RS485_OUT) 
+Rollershutter VD_OG_KN	 	"Verdunkelung Dachfenster" 		(Verdunkelung, OG_KN, RS485_IN, RS485_OUT) 
+Rollershutter DF_OG_KN	 	"Dachfenster" 					(Dachfenster, OG_KN, RS485_IN, RS485_OUT)
+
+Rollershutter RO_OG_KS 		"Rollo"  						(Rollo, OG_KS, RS485_IN, RS485_OUT) 
+Rollershutter VD_OG_KS		"Verdunkelung Dachfenster"		(Verdunkelung,OG_KS, RS485_IN, RS485_OUT)
+Rollershutter DF_OG_KS	 	"Dachfenster" 					(Dachfenster, OG_KS, RS485_IN, RS485_OUT) 
+
+Rollershutter RO_OG_SZ 		"Rollo" 						(Rollo, OG_SZ, RS485_IN, RS485_OUT) 
+Rollershutter VD_OG_SZ		"Verdunkelung Dachfenster" 		(Verdunkelung, OG_SZ, RS485_IN, RS485_OUT)
+Rollershutter DF_OG_SZ	 	"Dachfenster" 					(Dachfenster, OG_SZ, RS485_IN, RS485_OUT)
+
+Rollershutter DO_GR	 		"Garagentor" 					(Garage, GR_gateway) {autoupdate="false"} 
+
+
+/* Indoor Temperatures */
+Number TI_EG_WZ 	"Temperatur Wohnzimmer [%.1f °C]"		<temperature> 		(Temperatur, EG_WZ, RS485_IN)
+Number TI_EG_KU 	"Temperatur Küche [%.1f °C]"			<temperature> 		(Temperatur, EG_KU, RS485_IN)
+Number TI_EG_EZ 	"Temperatur Esszimmer [%.1f °C]"		<temperature> 		(Temperatur, EG_EZ, RS485_IN)
+Number TI_EG_GA 	"Temperatur Gang EG [%.1f °C]"			<temperature> 		(Temperatur, EG_GA, RS485_IN)
+
+Number TI_OG_BA 	"Temperatur Badezimmer [%.1f °C]"		<temperature> 		(Temperatur, OG_BA, RS485_IN)
+Number TI_OG_KN 	"Temperatur Leos Zimmer [%.1f °C]"		<temperature>	 	(Temperatur, OG_KN, RS485_IN)
+Number TI_OG_KS 	"Temperatur Kurbis Zimmer [%.1f °C]"	<temperature>		(Temperatur, OG_KS, RS485_IN)
+Number TI_OG_SZ 	"Temperatur Schlafzimmer [%.1f °C]"		<temperature> 		(Temperatur, OG_SZ, RS485_IN)
+Number TI_OG_GA 	"Temperatur Gang OG [%.1f °C]"			<temperature> 		(Temperatur, OG_GA, RS485_IN)
+
+Number TI_UG_HS 	"Temperatur Hobby Süd [%.1f °C]"		<temperature> 	 	(Temperatur, UG_HO, RS485_IN)
+Number TI_UG_HN 	"Temperatur Hobby Nord[%.1f °C]"		<temperature>		(Temperatur, UG_HO, RS485_IN)
+Number TI_UG_WK 	"Temperatur Waschküche [%.1f °C]"		<temperature>		(Temperatur, UG_WK, RS485_IN)
+Number TI_UG_HK 	"Temperatur Heizkeller [%.1f °C]"		<temperature> 		(Temperatur, UG_HK, RS485_IN)
+Number TI_UG_GA 	"Temperatur Gang UG [%.1f °C]"			<temperature>	 	(Temperatur, UG_GA, RS485_IN)
+Number TI_UG_LA 	"Temperatur Lager [%.1f °C]"			<temperature>	 	(Temperatur, UG_LA, RS485_IN)
+
+Number TI_GR	 	"Temperatur Garage [%.1f °C]"			<temperature>	 	(Temperatur, Garage, GR_gateway)
+Number TI_G2	 	"Temperatur Aussen [%.1f °C]"			<temperature>	 	(Temperatur, Aussen, GR_gateway)
+
+/* Indoor Temperatures (soll) */
+Number TS_EG_WZ 	"Soll-Temp. Wohnzimmer [%.1f °C]"		<temperature> 		(Temperatur_Soll, EG_WZ)
+Number TS_EG_KU 	"Soll-Temp. Küche [%.1f °C]"			<temperature> 		(Temperatur_Soll, EG_KU)
+Number TS_EG_EZ 	"Soll-Temp. Esszimmer [%.1f °C]"		<temperature> 		(Temperatur_Soll, EG_EZ)
+Number TS_EG_GA 	"Soll-Temp. Gang EG [%.1f °C]"			<temperature> 		(Temperatur_Soll, EG_GA)
+
+Number TS_OG_BA 	"Soll-Temp. Badezimmer [%.1f °C]"		<temperature> 		(Temperatur_Soll, OG_BA)
+Number TS_OG_KN 	"Soll-Temp. Leos Zimmer [%.1f °C]"		<temperature>	 	(Temperatur_Soll, OG_KN)
+Number TS_OG_KS 	"Soll-Temp. Kurbis Zimmer [%.1f °C]"	<temperature>		(Temperatur_Soll, OG_KS)
+Number TS_OG_SZ 	"Soll-Temp. Schlafzimmer [%.1f °C]"		<temperature> 		(Temperatur_Soll, OG_SZ)
+Number TS_OG_GA 	"Soll-Temp. Gang OG [%.1f °C]"			<temperature> 		(Temperatur_Soll, OG_GA)
+
+Number TS_UG_HO 	"Soll-Temp. Hobby (Mittel) [%.1f °C]"		    <temperature> 	 	(Temperatur_Soll, UG_HO)
+Number TS_UG_WK 	"Soll-Temp. Waschküche [%.1f °C]"		<temperature>		(Temperatur_Soll, UG_WK)
+Number TS_UG_GA 	"Soll-Temp. Gang UG [%.1f °C]"			<temperature>	 	(Temperatur_Soll, UG_GA)
+Number TS_UG_LA 	"Soll-Temp. Lager [%.1f °C]"			<temperature>	 	(Temperatur_Soll, UG_LA)
+
+
+/* Indoor Humidities */
+Number HI_EG_WZ 	"Feuchte Wohnzimmer [%.1f %%]"			<water> 				(Feuchtigkeit, EG_WZ, RS485_IN)
+Number HI_EG_KU 	"Feuchte Küche [%.1f %%]"				<water> 				(Feuchtigkeit, EG_KU, RS485_IN)
+Number HI_EG_EZ 	"Feuchte Esszimmer [%.1f %%]"			<water> 				(Feuchtigkeit, EG_EZ, RS485_IN)
+Number HI_EG_GA 	"Feuchte Gang EG [%.1f %%]"				<water> 				(Feuchtigkeit, EG_GA, RS485_IN)
+
+Number HI_OG_BA 	"Feuchte Badezimmer [%.1f %%]"			<water> 				(Feuchtigkeit, OG_BA, RS485_IN)
+Number HI_OG_KN 	"Feuchte Leos Zimmer [%.1f %%]"			<water> 				(Feuchtigkeit, OG_KN, RS485_IN)
+Number HI_OG_KS 	"Feuchte Kurbis Zimmer [%.1f %%]"		<water> 				(Feuchtigkeit, OG_KS, RS485_IN)
+Number HI_OG_SZ 	"Feuchte Schlafzimmer [%.1f %%]"		<water> 				(Feuchtigkeit, OG_SZ, RS485_IN)
+Number HI_OG_GA 	"Feuchte Gang OG [%.1f %%]"				<water> 				(Feuchtigkeit, OG_GA, RS485_IN)
+
+Number HI_UG_HS 	"Feuchte Hobby Süd [%.1f %%]"			<water> 				(Feuchtigkeit, UG_HO, RS485_IN)
+Number HI_UG_HN 	"Feuchte Hobby Nord [%.1f %%]"			<water> 				(Feuchtigkeit, UG_HO, RS485_IN)
+Number HI_UG_WK 	"Feuchte Waschküche [%.1f %%]"			<water> 				(Feuchtigkeit, UG_WK, RS485_IN)
+Number HI_UG_HK 	"Feuchte Heizkeller [%.1f %%]"			<water> 				(Feuchtigkeit, UG_HK, RS485_IN)
+Number HI_UG_GA 	"Feuchte Gang UG [%.1f %%]"				<water> 				(Feuchtigkeit, UG_GA, RS485_IN)
+Number HI_UG_LA		"Feuchte Lager [%.1f %%]"				<water> 				(Feuchtigkeit, UG_LA, RS485_IN)
+
+Number HI_GR 		"Feuchte Garage [%.1f %%]"				<water>	 				(Feuchtigkeit, Garage, GR_gateway)
+Number HI_G2	 	"Feuchte Aussen [%.1f %%]"				<water>			 		(Feuchtigkeit, Aussen, GR_gateway)
+
+
+/* Heating Setpoints */
+Switch Sommerbetrieb "Sommerbetrieb Heizung"						<heating>               
+
+Number U_UG_H1 		"Ist-Stellwert Hobby 1 [%.1f]"				<heating> 				(heizung_stellwert, UG_HO, RS485_IN, RS485_OUT)
+Number U_UG_H2 		"Ist-Stellwert Hobby 2 [%.1f]"				<heating>				(heizung_stellwert, UG_HO, RS485_IN, RS485_OUT)
+Number U_UG_H3 		"Ist-Stellwert Hobby 3 [%.1f]"				<heating>				(heizung_stellwert, UG_HO, RS485_IN, RS485_OUT)
+Number U_UG_LA 		"Ist-Stellwert Lager [%.1f]"				<heating>				(heizung_stellwert, UG_LA, RS485_IN, RS485_OUT)
+Number U_UG_GA 		"Ist-Stellwert Gang UG [%.1f]"				<heating>				(heizung_stellwert, UG_GA, RS485_IN, RS485_OUT)
+Number U_UG_WK  	"Ist-Stellwert Waschküche [%.1f]"			<heating>				(heizung_stellwert, UG_WK, RS485_IN, RS485_OUT)
+
+Number U_EG_KU  	"Ist-Stellwert Küche [%.1f]"				<heating>				(heizung_stellwert, EG_KU, RS485_IN, RS485_OUT)
+Number U_EG_E1  	"Ist-Stellwert Essen 1 [%.1f]"				<heating>				(heizung_stellwert, EG_EZ, RS485_IN, RS485_OUT)
+Number U_EG_E2  	"Ist-Stellwert Essen 2 [%.1f]"				<heating>				(heizung_stellwert, EG_EZ, RS485_IN, RS485_OUT)
+Number U_EG_GA  	"Ist-Stellwert Gang EG [%.1f]"				<heating>				(heizung_stellwert, EG_GA, RS485_IN, RS485_OUT)
+Number U_EG_WZ  	"Ist-Stellwert Wohnzimmer [%.1f]"			<heating>				(heizung_stellwert, EG_WZ, RS485_IN, RS485_OUT)
+Number U_EG_GR  	"Ist-Stellwert Gardarobe [%.1f]"			<heating>				(heizung_stellwert, EG_GR, RS485_IN, RS485_OUT)
+Number U_EG_WC  	"Ist-Stellwert WC [%.1f]"					<heating>				(heizung_stellwert, EG_WC, RS485_IN, RS485_OUT)
+
+Number U_OG_KS  	"Ist-Stellwert Kind Süd [%.1f]"				<heating>				(heizung_stellwert, OG_KS, RS485_IN, RS485_OUT)
+Number U_OG_KN  	"Ist-Stellwert Kind Nord [%.1f]"			<heating>				(heizung_stellwert, OG_KN, RS485_IN, RS485_OUT)
+Number U_OG_GA  	"Ist-Stellwert Gang OG [%.1f]"				<heating>				(heizung_stellwert, OG_GA, RS485_IN, RS485_OUT)
+Number U_OG_BA  	"Ist-Stellwert Badezimmer [%.1f]"			<heating>				(heizung_stellwert, OG_BA, RS485_IN, RS485_OUT)
+Number U_OG_SZ  	"Ist-Stellwert Schlafzimmer [%.1f]"			<heating>				(heizung_stellwert, OG_SZ, RS485_IN, RS485_OUT)
+
+
+/* Heating default setpoints */
+
+Number UD_UG_H1 	"Default-Stellwert Hobby 1 [%.1f]"				<heating> 				(heizung_stellwert_default, UG_HO)
+Number UD_UG_H2 	"Default-Stellwert Hobby 2 [%.1f]"				<heating>				(heizung_stellwert_default, UG_HO)
+Number UD_UG_H3 	"Default-Stellwert Hobby 3 [%.1f]"				<heating>				(heizung_stellwert_default, UG_HO)
+Number UD_UG_LA 	"Default-Stellwert Lager [%.1f]"				<heating>				(heizung_stellwert_default, UG_LA)
+Number UD_UG_GA 	"Default-Stellwert Gang UG [%.1f]"				<heating>				(heizung_stellwert_default, UG_GA)
+Number UD_UG_WK  	"Default-Stellwert Waschküche [%.1f]"			<heating>				(heizung_stellwert_default, UG_WK)
+
+Number UD_EG_KU  	"Default-Stellwert Küche [%.1f]"				<heating>				(heizung_stellwert_default, EG_KU)
+Number UD_EG_E1  	"Default-Stellwert Essen 1 [%.1f]"				<heating>				(heizung_stellwert_default, EG_EZ)
+Number UD_EG_E2  	"Default-Stellwert Essen 2 [%.1f]"				<heating>				(heizung_stellwert_default, EG_EZ)
+Number UD_EG_GA  	"Default-Stellwert Gang EG [%.1f]"				<heating>				(heizung_stellwert_default, EG_GA)
+Number UD_EG_WZ  	"Default-Stellwert Wohnzimmer [%.1f]"			<heating>				(heizung_stellwert_default, EG_WZ)
+Number UD_EG_GR  	"Default-Stellwert Gardarobe [%.1f]"			<heating>				(heizung_stellwert_default, EG_GR)
+Number UD_EG_WC  	"Default-Stellwert WC [%.1f]"					<heating>				(heizung_stellwert_default, EG_WC)
+
+Number UD_OG_KS  	"Default-Stellwert Kind Süd [%.1f]"				<heating>				(heizung_stellwert_default, OG_KS)
+Number UD_OG_KN  	"Default-Stellwert Kind Nord [%.1f]"			<heating>				(heizung_stellwert_default, OG_KN)
+Number UD_OG_GA  	"Default-Stellwert Gang OG [%.1f]"				<heating>				(heizung_stellwert_default, OG_GA)
+Number UD_OG_BA  	"Default-Stellwert Badezimmer [%.1f]"			<heating>				(heizung_stellwert_default, OG_BA)
+Number UD_OG_SZ  	"Default-Stellwert Schlafzimmer [%.1f]"			<heating>				(heizung_stellwert_default, OG_SZ)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

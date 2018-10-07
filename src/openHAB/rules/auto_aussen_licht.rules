@@ -1,0 +1,29 @@
+//rule "aussen_an"
+//    when   
+//            Time cron "0 0 21 * * ?"
+//    then   
+//            sendCommand(LI_EG_AO, ON)
+//    end
+//
+// rule "aussen_aus"
+//    when   
+//            Time cron "0 0 23 * * ?"
+//    then   
+//             sendCommand(LI_EG_AO, OFF)
+//    end
+
+
+rule "An"
+when
+    Item Sunset_Event received update ON
+then
+    sendCommand(LI_EG_AO, ON)
+end
+
+rule "An"
+when
+    Item Sunset_Event_p120 received update ON
+then
+    sendCommand(LI_EG_AO, OFF)
+end
+

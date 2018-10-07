@@ -1,0 +1,131 @@
+var String in_buffer = ""
+var String parser_in_string = ""
+var String address = ""
+var String messageType=""
+var float value=0
+
+
+
+ //Gateway initialisieren
+//rule "init gateway"
+//	when 
+//		System started
+//	then
+//end
+
+
+// message parser and handler for incoming RS485 messages
+rule "Listen"
+	when 
+		Item telnet_in received update
+	then
+
+	    in_buffer = in_buffer + telnet_in.state.toString.trim
+	    println("in buffer: " + in_buffer)
+	    
+	    
+	    while (in_buffer.contains("$")) {
+	    	//println("entering message parser")
+	    	parser_in_string=in_buffer.substring(0,in_buffer.indexOf("$")+1)
+	    	in_buffer=in_buffer.substring(in_buffer.indexOf("$")+1)
+	    	
+	    	//println("Input String for Parser: " + parser_in_string)
+	    	//println("reststring:" + in_buffer + ":" )
+	    	//die indicies der trennzeichen suchen
+	    	var int index4 = parser_in_string.indexOf("$")						
+			var int index1 = parser_in_string.indexOf("!")
+			var int index2 = parser_in_string.substring(index1+1).indexOf("!") + index1+1
+			var int index3 = parser_in_string.substring(index2+1).indexOf("!") + index2+1
+			//println(index1 + " " + index2 + " " + index3 + " " + index4)
+			
+			//die parameter extrahieren
+			if (index1>-1 && index2>index1 && index3>index2 && index4>index3){
+			messageType=parser_in_string.substring(index1+1,index2)
+			//println("messageType: " + messageType)
+			address=parser_in_string.substring(index2+1,index3)
+			//println("Address: " + address)
+			value = 0
+			if( parser_in_string.substring(index3+1,index4)==""){
+				value=0
+			}
+			else{
+			value=Float::parseFloat(parser_in_string.substring(index3+1,index4))
+			}			
+			//println("Value: " + value)
+			
+			//auf "w" messages reagieren
+			var this_item = RS485_IN.members.findFirst([name==address])
+			//println(this_item.name)
+			if ((messageType=="w") || (messageType=="i")) {
+				//println("I message parsing")
+				//ON/OFF Typen
+				if( (address.contains("LI")) || (address.contains("BELL"))) {
+					var int on_off=0
+					if (this_item.state==ON) {on_off=0}
+					else {on_off=1}
+					if (value==1) {on_off=1}
+					if (value==0) {on_off=0}
+					
+					postUpdate(this_item, if(on_off==0) OFF else ON)
+				}
+				if((address.contains("ZE"))) {
+					var int on_off=0
+					if (this_item.state==ON) {on_off=0}
+					else {on_off=1}
+					if (value==1) {on_off=1}
+					if (value==0) {on_off=0}
+					
+					postUpdate(this_item, if(on_off==0) OFF else ON)
+				}
+				
+				
+				//Temperaturen
+				if(address.contains("TI")){
+					//println("TI")
+					postUpdate(this_item, value*0.1 )
+				}
+				if (address.contains("HI")){
+					//println("TI")
+					postUpdate(this_item, value )
+				}
+				//if (address.contains("U_")){
+					//println("U_")
+				//	postUpdate(this_item, value )
+				//}
+				
+				//Verdunkelungen, Dachfenster, Rollos
+				if(address.contains("RO") || address.contains("VD") || address.contains("DF")){
+					if (value==1) {postUpdate(this_item, 0)}
+					else if (value==-1) {postUpdate(this_item, 100)}
+					else {postUpdate(this_item, 50)}
+					
+				}
+				
+			}
+			
+			
+	    }
+	    }
+	    
+end
+
+
+
+//rule GATEWAY_OUTER
+//	when
+//		Item RS485_Gateway_out received command
+//	then
+//	while (Sending==ON){Thread::sleep(5)}
+//	postUpdate(Sending, ON)
+//    sendCommand(RS485_Gateway_outter, receivedCommand)
+//    Thread::sleep(10)
+//    postUpdate(Sending, OFF)
+//end
+
+
+
+
+
+
+
+
