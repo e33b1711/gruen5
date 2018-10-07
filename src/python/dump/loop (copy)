@@ -1,0 +1,113 @@
+#!/usr/bin/env python
+
+import tcp_server
+import time
+import Queue
+import states
+
+
+def comm_handler():
+	#global last_time
+	#global i
+	#tcp testen
+	#was in die out que stecken
+ 	#if time.time()-5>last_time:
+	#	last_time=time.time()
+	#	tcp_server.message_queue_out.put('message nr:' + str(i) + '\n')
+	#	i=i+1	
+	
+	# in queue abrufen	
+	try:
+		in_message = tcp_server.message_queue_in.get_nowait()
+	except Queue.Empty:
+	 	#No messages waiting so stop checking for writability.
+		#print >>sys.stderr, 'output queue for', s.getpeername(), 'is empty'
+        	#outputs.remove(s)
+		pass
+	else:
+		print(in_message)
+		message_parser(in_message)
+
+def message_parser(in_message):
+	index=[]
+	for i in range(len(in_message)):
+		if in_message[i]=='!': index.append(i)
+		
+	for i in range(len(in_message)):
+		if in_message[i]=='$': index.append(i)
+	
+	#print(index)
+	if len(index)!=4:
+		print('Error parsing message!')
+		return
+
+	if index[3]<index[2]:
+		print('Error parsing message!')
+		return
+
+	name_string=in_message[index[1]+1:index[2]]
+	#print(name_string)
+	type_string=in_message[index[0]+1:index[1]]
+	#print(type_string)
+	value_string=in_message[index[2]+1:index[3]]
+	#print(value_string)
+
+	try:
+    		in_value=int(value_string)
+  	except ValueError:
+    		print('Error parsing message (value)!')
+		return
+	
+	print('Parsed message: ' + type_string + ' ' + name_string + ' ' + str(in_value))
+	
+	states.message_handler(type_string, name_string, in_value) 	
+
+
+def user_logic():
+	#print(states.value)
+	#taster => timer / licht tooglen
+	#	         0	  1	      2		  3 	   4	    5        6        7        8        9        10 
+	#name=		['LI_GR', 'LI_GR_L1', 'LI_GR_L2', 'DO_GR', 'ZE_GR', 'T1_GR', 'T2_GR', 'TI_GR', 'HI_GR', 'TI_G2', 'HI_G2']
+	
+	if states.value[5]==1:
+		print('User Logic: 1')
+		states.value[0]=2
+	
+	if states.value[6]==1:
+		print('User Logic: 2')
+		states.value[4]=1 
+
+	#timer
+	if states.value[4]!=0 and states.aux_value[4]==0: #start => running
+		states.aux_value2[4]=time.time()+120  	#timer
+		states.value[1]=1			#gekoppeltes licht	
+
+	if states.value[4]==1  and states.aux_value[4]==1: #running
+		if time.time() > states.aux_value2[4]: # running => run out
+			states.value[4]=0		#timer
+			states.value[1]=0		#gekoppeltes licht
+
+
+
+#main loop
+tcp_server.init()
+states.init()
+#global last_time
+#global i
+#i=0
+#last_time=0
+
+while True:
+	
+	#print('A')
+	tcp_server.step()
+	#print('B')
+	comm_handler()
+
+	#print('C')
+	user_logic()
+	#print('D')
+	states.update()
+	#print('E')
+	
+	

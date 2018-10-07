@@ -1,0 +1,150 @@
+#!/usr/bin/env python
+
+import tcp_server
+import time
+import Queue
+import states
+
+
+def comm_handler():
+	#global last_time
+	#global i
+	#tcp testen
+	#was in die out que stecken
+ 	#if time.time()-5>last_time:
+	#	last_time=time.time()
+	#	tcp_server.message_queue_out.put('message nr:' + str(i) + '\n')
+	#	i=i+1	
+	
+	# in queue abrufen	
+	try:
+		in_message = tcp_server.message_queue_in.get_nowait()
+	except Queue.Empty:
+	 	#No messages waiting so stop checking for writability.
+		#print >>sys.stderr, 'output queue for', s.getpeername(), 'is empty'
+        	#outputs.remove(s)
+		pass
+	else:
+		print(in_message)
+		message_parser(in_message)
+
+def message_parser(in_message):
+	index=[]
+	for i in range(len(in_message)):
+		if in_message[i]=='!': index.append(i)
+		
+	for i in range(len(in_message)):
+		if in_message[i]=='$': index.append(i)
+	
+	#print(index)
+	if len(index)!=4:
+		print('Error parsing message!')
+		return
+
+	if index[3]<index[2]:
+		print('Error parsing message!')
+		return
+
+	name_string=in_message[index[1]+1:index[2]]
+	#print(name_string)
+	type_string=in_message[index[0]+1:index[1]]
+	#print(type_string)
+	value_string=in_message[index[2]+1:index[3]]
+	#print(value_string)
+
+	try:
+    		in_value=int(value_string)
+  	except ValueError:
+    		print('Error parsing message (value)!')
+		return
+	
+	print('Parsed message: ' + type_string + ' ' + name_string + ' ' + str(in_value))
+	
+	states.message_handler(type_string, name_string, in_value) 	
+
+
+def user_logic():
+	#print(states.value)
+	#taster => timer / licht tooglen
+	#		0	  1	      2		  3 	   4	    5        6        7        8        9        10 
+	#name=		['LI_GR', 'LI_GR_L1', 'LI_GR_L2', 'DO_GR', 'ZE_GR', 'ZE_G2', 'T1_GR', 'TI_GR', 'HI_GR', 'TI_G2', 'HI_G2',  'DA_GR']	
+	
+	
+	#Taster
+	if states.value[6]==1:
+		print('User Logic: taster1')
+		states.message_handler('w', 'ZE_G2', 0)
+		if states.value[0]==0:
+			states.message_handler('w', 'ZE_GR', 1)
+		else:
+			states.message_handler('w', 'ZE_GR', 0)
+			
+		
+		
+	#Tor-auf trigger
+	if states.aux_value2[3]==1:
+		states.message_handler('w', 'ZE_G2', 1)
+		print('user logic: door-open-trigger')
+		
+		
+
+
+	#timer ZE_GR
+	if states.value[4]==1 and states.aux_value[4]==1 and states.aux_value3[4]==0: #start => running
+		print('ZE_GR: timer_on')
+		states.aux_value3[4]=1	
+
+	if states.value[4]==1  and states.aux_value[4]==1: #running
+		if time.time() > states.set_time[4]+10: # running => run out
+			print('ZE_GR: timer ran out')
+			states.message_handler('w', 'ZE_GR', 0)
+			states.aux_value3[4]=0	
+
+	if states.value[4]==0 and states.aux_value3[4]==1: #timer abbrechen
+		states.aux_value3[4]=0		
+		print('ZE_GR: timer abort')
+
+	#timer ZE_G2
+	if states.value[5]==1 and states.aux_value[5]==1 and states.aux_value3[5]==0: #start => running
+		print('timer_on')
+		states.aux_value3[5]=1	
+
+	if states.value[5]==1  and states.aux_value[5]==1: #running
+		if time.time() > states.set_time[5]+20: # running => run out
+			print('timer ran out')
+			states.message_handler('w', 'ZE_G2', 0)
+			states.aux_value3[5]=0	
+
+	if states.value[5]==0 and states.aux_value3[5]==1: #timer abbrechen
+		states.aux_value3[5]=0		
+		print('timer abort')
+
+	# LI_GR an wenn einer der Timer an ist
+	val=0;
+	if states.value[5]==1 or states.value[4]==1: val=1
+	states.value[0]=val
+
+
+
+#main loop
+tcp_server.init()
+states.init()
+#global last_time
+#global i
+#i=0
+#last_time=0
+
+while True:
+	
+	#print('A')
+	tcp_server.step()
+	#print('B')
+	comm_handler()
+
+	#print('C')
+	user_logic()
+	#print('D')
+	states.update()
+	#print('E')
+	
+	
