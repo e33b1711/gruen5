@@ -3,8 +3,8 @@ Number Sun_Azimuth              "Azimut der Sonne"                   <sun>      
 DateTime Sunrise_Time           "Sonnenaufgang [%1$tH:%1$tM]"         <sunrise>   { channel = "astro:sun:home:rise#start" }
 DateTime Sunset_Time            "[%1$tH:%1$tM]"          <sunset>    { channel = "astro:sun:home:set#start" }
 
-DateTime time  "Uhrzeit [%1$tH:%1$tM]"  								<clock>   	{ channel="ntp:ntp:demo:dateTime" } 
-DateTime date  "Datum [%1$tA, %1$td.%1$tm.%1$tY]"  				<calendar>	{ channel="ntp:ntp:demo:dateTime" }
+DateTime time  "Uhrzeit [%1$tH:%1$tM]"  		<time>   	{ channel="ntp:ntp:demo:dateTime" } 
+DateTime date  "Datum [%1$tA, %1$td.%1$tm.%1$tY]"  	<calendar>	{ channel="ntp:ntp:demo:dateTime" }
 
 
 
